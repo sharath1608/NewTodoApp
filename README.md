@@ -1,4 +1,4 @@
-# NewTodoApp
+# NoteMeUp
 This app is the capstone project for the Android Nanodegree course by Udacity. Please read the UI mockup document to get a feel of how this
 project began.
 This is a location sensitive reminder app that will allow you to keep notes and get notifications based on your location and/or time set. 
