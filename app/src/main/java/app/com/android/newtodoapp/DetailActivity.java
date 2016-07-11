@@ -47,6 +47,17 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
     }
 
+    public boolean checkForErrorAndReturn(){
+        mDateTimeValid = true;
+        backPressedListener.OnBackPress();
+        if(mDateTimeValid) {
+            if (annoyingAd.isLoaded()) {
+                annoyingAd.show();
+            }
+        }
+        return mDateTimeValid;
+    }
+
     public void requestInterstitialAd(){
         String deviceId = getString(R.string.dev_id);
         // Uncomment the below line if using an emulator
@@ -61,29 +72,24 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-    backPressedListener.OnBackPress();
-    if(mDateTimeValid) {
-        if (annoyingAd.isLoaded()) {
-            annoyingAd.show();
+        if(checkForErrorAndReturn()){
+            super.onBackPressed();
         }
-        super.onBackPressed();
-    }
-    mDateTimeValid = true;
-    }
-
-    @Override
-    public boolean onNavigateUp() {
-        return super.onNavigateUp();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        backPressedListener.OnBackPress();
-        if(mDateTimeValid) {
-            if (annoyingAd.isLoaded()) {
-                annoyingAd.show();
-            }
+        return checkForErrorAndReturn();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                break;
         }
-        return mDateTimeValid;
+        return(super.onOptionsItemSelected(item));
     }
 }
