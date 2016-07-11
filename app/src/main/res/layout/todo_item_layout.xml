@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:orientation="vertical"
+    android:id="@+id/todo_text_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/cardTitleTheme"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:baselineAligned="false"
+            android:layout_below="@id/title_tv"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:contentDescription="@string/date_img_desc"
+                    android:id="@+id/clock_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_access_time_black_18dp"/>
+                <TextView
+                    android:id="@+id/date_tv"
+                    android:layout_toEndOf="@id/clock_img"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignTop="@id/clock_img"
+                    android:layout_marginStart="5dp"
+                    style="@style/dateLocTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:contentDescription="@string/loc_img_desc"
+                    android:id="@+id/location_img"
+                    android:src="@drawable/ic_place_black_18dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:id="@+id/location_tv"
+                    android:layout_alignTop="@id/location_img"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/location_img"
+                    style="@style/dateLocTheme"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>
+

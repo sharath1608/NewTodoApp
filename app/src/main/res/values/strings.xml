@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">NoteMeUp</string>
+    <string name="action_settings">Settings</string>
+    <string name="scan_settings">Scan Item</string>
+    <string name="bundle_key">key_id</string>
+    <string name="RPC_KEY_TAG">rpc_key</string>
+    <string name="UPC_TAG">upc</string>
+    <string name="LOOKUP_TAG">lookup</string>
+    <string name="DESCRIPTION_TAG">description</string>
+    <string name="rpc_url">"https://www.upcdatabase.com/xmlrpc"</string>
+    <string name="found_tag">found</string>
+    <string name="invalid_product">Product not found. Please enter it manually</string>
+    <string name="mode">mode</string>
+    <string name="Uri_list_error">Error validating URI for list</string>
+    <string name="URi_items_error">Error validating URI for items</string>
+    <string name="date_img_desc">This is an image for date</string>
+    <string name="loc_img_desc">This is an image for location</string>
+    <string name="error_list_del">Error occured while deleting todo item</string>
+    <string name="error_date">"Invalid date. Please enter a date greater than current date"</string>
+    <string name="error_time_selection">Something went wrong with time selection</string>
+    <string name="error_invalid_time">Invalid time range. Please enter a rag</string>
+    <string name="alert_title">Pick a time range</string>
+    <string-array name="time_range_list">
+        <item>Early Morning (6am - 9am)</item>
+        <item>Morning (9am - 12pm)</item>
+        <item>Afternoon (12pm - 4pm)</item>
+        <item>Evening (4pm - 7pm)</item>
+        <item>Night (7pm-12am)</item>
+    </string-array>
+    <string name="time_ok">OK</string>
+    <string name="not_specified">Not Specified</string>
+    <string name="time_cancel">Cancel</string>
+    <string name="TODO_SHARED_PREF">todo_shared_preferences</string>
+    <string name="location_id_key">location_id_key</string>
+    <string name="location_obj_key">location_obj_key</string>
+    <string name="location_map_key">sharedPrefLocationMap</string>
+    <string name="date_key">_date</string>
+    <string name="start_key">_start_time</string>
+    <string name="end_key">_end_time</string>
+    <string name="location_request_key">location_request_key</string>
+    <string name="no_task">Woo-hoo! No pending tasks.</string>
+    <string name="title_hint">Title for todo</string>
+    <string name="location_hint">Pick a place</string>
+    <string name="time_hint">Pick a time</string>
+    <string name="todo_item_hint">Todo item</string>
+    <string name="date_hint">Pick a date</string>
+    <string name="alarm_id">alarm_id</string>
+    <string name="delete_image_description">Image to delete the item</string>
+    <string name="time_reminder">You have things to do now!</string>
+    <string name="location_reminder">You have things to do nearby!</string>
+    <string name="dummy_intent">dummy_intent_action</string>
+    <string name="location_fetch_error">Uh Oh! Geofence was not deleted.</string>
+    <string name="alarm_mode">alarm_mode</string>
+    <string name="notify_message">Click to view the tasks</string>
+    <string name= "google_play_error">Unable to connect to Google Play services</string>
+    <string name="parcel_key">parcel_key</string>
+    <string name="builder_title">Date and Time</string>
+    <string name="builder_message">"Date and Time should both be empty or entered"</string>
+    <string name="time_image_description">Image to represent time</string>
+    <string name="date_image_description">Image to represent date</string>
+    <string name="location_description">Image to represent location</string>
+    <string name="widget_title_image">Widget title image</string>
+
+    <!-- Add deviceId here for admob, or leave blank for emulator -->
+    <string name="dev_id"></string>
+
+    <!-- Add API key for UPC database lookup -->
+    <string name="rpc_key"></string>
+
+    <!-- Admob ID. Keeping it here since it's a test ad-->
+    <string name="admob_id">ca-app-pub-3940256099942544/1033173712</string>
+
+</resources>

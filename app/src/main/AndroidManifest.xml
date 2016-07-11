@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.com.android.newtodoapp">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <receiver android:name=".GeoFenceBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".GeoAlarmReceiver"/>
+        <activity
+            android:name="app.com.android.newtodoapp.MainActivity"
+            android:label=  "@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="app.com.android.newtodoapp.GeofenceActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:label="GeoFence Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="app.com.android.newtodoapp.DetailActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Detail Activity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="app.com.android.newtodoapp.ScannerActivity"
+            android:label="Basic Scanner Activity">
+        </activity>
+
+        <service android:name="app.com.android.newtodoapp.GeofenceIntentService"/>
+        <receiver android:name=".widget.WidgetProvider"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.android.newtodoapp.DATA_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info"/>
+        </receiver>
+
+        <service android:name=".widget.WidgetRemoteService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDdPTmJ8PkmYRN6p9LcGN8SoxNp5payauA" />
+        <meta-data android:name="com.google.android.gms.version"  android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:authorities="app.com.android.newtodoapp.TodoProvider"
+            android:name="app.com.android.newtodoapp.provider.TodoProvider"
+            android:exported="true"/>
+
+    </application>
+</manifest>

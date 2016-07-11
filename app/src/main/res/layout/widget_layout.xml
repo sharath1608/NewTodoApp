@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/widget_background"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/widget_header_layout"
+        android:layout_width="match_parent"
+        android:background="@color/header_background_normal"
+        android:layout_height="64dp">
+        <TextView
+            android:id="@+id/widget_title"
+            style="@style/detailTextTheme"
+            android:text="@string/app_name"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:textColor="@color/primary_dark_material_dark"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/widget_header_image"
+            android:src="@drawable/appbar_image"
+            android:contentDescription="@string/widget_title_image"
+            android:layout_width="wrap_content"
+            android:layout_toStartOf="@id/widget_title"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <ListView
+        android:layout_marginTop="70dp"
+        android:divider="@color/primary_dark_material_dark"
+        android:dividerHeight="1px"
+        android:id="@+id/widget_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_marginTop="70dp"
+        android:id="@+id/widget_empty"
+        android:text="@string/no_task"
+        android:textColor="@color/appbar_color"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:fontFamily="sans-serif-condensed"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>
