@@ -1,15 +1,19 @@
 package app.com.android.newtodoapp;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.util.Log;
@@ -47,7 +51,7 @@ public class CardListFragment extends Fragment implements LoaderManager.LoaderCa
     String LOG_TAG = getClass().getSimpleName();
     private CardListView mCardListView;
     ArrayList<Card> mCardList;
-    private final String ACTION_DATA_UPDATED = "com.android.newtodoapp.DATA_UPDATE";
+    private final String ACTION_DATA_UPDATED = getString(R.string.widget_date_update);
     boolean mAllDone;
 
 
@@ -58,13 +62,38 @@ public class CardListFragment extends Fragment implements LoaderManager.LoaderCa
         return view;
     }
 
+    // Show notification if the location is turned off.
+    public void sendLocationDisableNotification(){
+            Intent notificationIntent = new Intent(getActivity(),DetailActivity.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(getActivity());
+            stackBuilder.addParentStack(DetailActivity.class).addParentStack(MainActivity.class);
+            stackBuilder.addNextIntent(notificationIntent);
+
+            PendingIntent notificationPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
+            builder.setSmallIcon(R.drawable.ic_event_note_white_18dp)
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_event_note_black_24dp))
+                    .setColor(getResources().getColor(R.color.vanilla_white))
+                    .setContentTitle(getString(R.string.location_off_title))
+                    .setContentText(getString(R.string.location_off_detail))
+                    .setContentIntent(notificationPendingIntent);
+
+            builder.setAutoCancel(true);
+            NotificationManager manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        if(!Utils.isLocationEnabled(getActivity())){
+            sendLocationDisableNotification();
+        }
+
         mCardList = new ArrayList<>();
         mCardAdapter = new CardArrayAdapter(getActivity(), mCardList);
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,7 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.LocationManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.util.Pair;
+
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -136,7 +141,7 @@ public class Utils {
 
     // Get shared preferences
     public static SharedPreferences getSharedPreferences(Context context){
-        return context.getSharedPreferences(context.getString(R.string.TODO_SHARED_PREF),Context.MODE_PRIVATE);
+        return context.getSharedPreferences(context.getString(R.string.TODO_SHARED_PREF), Context.MODE_PRIVATE);
     }
 
     // Get the global location map from shared preferences
@@ -163,6 +168,24 @@ public class Utils {
         String locationMapString = gson.toJson(newLocationMap);
         editor.putString(context.getString(R.string.location_map_key), locationMapString);
         editor.apply();
+    }
+
+    // Credits to user Slava Fir on StackOverflow for the solution
+        public static boolean isLocationEnabled(Context context){
+        int locationMode = 0;
+        String locationProviders;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(),Settings.Secure.LOCATION_MODE);
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return locationMode!=Settings.Secure.LOCATION_MODE_OFF;
+        }else{
+            locationProviders = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.LOCATION_MODE);
+            return !locationProviders.isEmpty();
+        }
     }
 
     public static  char computeCheckCode(char[] upcString){

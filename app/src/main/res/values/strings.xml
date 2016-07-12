@@ -47,7 +47,7 @@
     <string name="alarm_id">alarm_id</string>
     <string name="delete_image_description">Image to delete the item</string>
     <string name="time_reminder">You have things to do now!</string>
-    <string name="location_reminder">You have things to do nearby!</string>
+    <string name="location_reminder">You have things to do here!</string>
     <string name="dummy_intent">dummy_intent_action</string>
     <string name="location_fetch_error">Uh Oh! Geofence was not deleted.</string>
     <string name="alarm_mode">alarm_mode</string>
@@ -60,6 +60,9 @@
     <string name="date_image_description">Image to represent date</string>
     <string name="location_description">Image to represent location</string>
     <string name="widget_title_image">Widget title image</string>
+    <string name="location_off_title">Location not detected</string>
+    <string name="location_off_detail">Please turn on location for accuracy</string>
+    <string name="widget_date_update">com.android.newtodoapp.DATA_UPDATE</string>
 
     <!-- Add deviceId here for admob, or leave blank for emulator -->
     <string name="dev_id"></string>
