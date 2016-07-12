@@ -51,7 +51,7 @@ public class CardListFragment extends Fragment implements LoaderManager.LoaderCa
     String LOG_TAG = getClass().getSimpleName();
     private CardListView mCardListView;
     ArrayList<Card> mCardList;
-    private final String ACTION_DATA_UPDATED = getString(R.string.widget_date_update);
+    private final String ACTION_DATA_UPDATED = "com.android.newtodoapp.DATA_UPDATE";
     boolean mAllDone;
 
 

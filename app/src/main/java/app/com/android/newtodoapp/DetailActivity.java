@@ -79,7 +79,7 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        return checkForErrorAndReturn();
+        return true;
     }
 
 
@@ -87,7 +87,9 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                if(checkForErrorAndReturn()) {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
                 break;
         }
         return(super.onOptionsItemSelected(item));
